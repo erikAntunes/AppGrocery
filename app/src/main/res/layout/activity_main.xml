@@ -17,7 +17,10 @@
         android:layout_marginBottom="8dp"
         android:text="Compras"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:drawableTop="@drawable/cart"
+        android:textAllCaps="false"
+        />
 
     <Button
         android:id="@+id/button2"
@@ -29,7 +32,9 @@
         android:text="Lista"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toEndOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@+id/button"
+        android:drawableTop="@drawable/list"
+        android:textAllCaps="false"/>
 
     <Button
         android:id="@+id/button3"
@@ -39,7 +44,9 @@
         android:layout_marginBottom="8dp"
         android:text="Promoções"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:drawableTop="@drawable/hot"
+        android:textAllCaps="false"/>
 
     <FrameLayout
         android:layout_width="0dp"
