@@ -39,6 +39,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button listaButton = findViewById(R.id.button2);
+        listaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exibirListaFragment();
+            }
+        });
+
+        Button promocaoButton = findViewById(R.id.button3);
     }
     private void exibirComprasFragment(){
         FragmentManager manager = getSupportFragmentManager();
@@ -46,4 +55,13 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.fundo_01,new FragmentCompras());
         transaction.commit();
     }
+
+    private void exibirListaFragment(){
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fundo_01,new FragmentLista());
+        transaction.commit();
+
+    }
+
 }
