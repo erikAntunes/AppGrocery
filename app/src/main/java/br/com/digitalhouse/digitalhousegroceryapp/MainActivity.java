@@ -48,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button promocaoButton = findViewById(R.id.button3);
+        promocaoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exibirPromocao();
+            }
+        });
     }
     private void exibirComprasFragment(){
         FragmentManager manager = getSupportFragmentManager();
@@ -62,6 +68,13 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.fundo_01,new FragmentLista());
         transaction.commit();
 
+    }
+
+    private void exibirPromocao(){
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction  = manager.beginTransaction();
+        transaction.replace(R.id.fundo_01,new FragmentPromocao());
+        transaction.commit();
     }
 
 }
