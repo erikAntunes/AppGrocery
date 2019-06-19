@@ -3,6 +3,9 @@ package br.com.digitalhouse.digitalhousegroceryapp;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -49,13 +52,23 @@ public class Home extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+
+
+
         if (id == R.id.nav_compras) {
             // Handle the camera action
+
+            transaction.replace(R.id.container_id,new FragmentCompras());
         } else if (id == R.id.nav_lista) {
+            transaction.replace(R.id.container_id,new FragmentLista());
 
         } else if (id == R.id.nav_promocoes){
+            transaction.replace(R.id.container_id,new FragmentPromocao());
 
         }
+        transaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

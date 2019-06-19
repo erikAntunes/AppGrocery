@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         emailEditText.setError(null);
         senhaEditText.setError(null);
 
-        if(emailDigitado.equals("eduardo") && senhaDigitada.equals("123")){
+        if(emailDigitado.equals("erik") && senhaDigitada.equals("1234")){
 
             Intent intent = new Intent(this, Home.class);
 
