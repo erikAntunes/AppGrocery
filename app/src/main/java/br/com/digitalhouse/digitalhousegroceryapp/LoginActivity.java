@@ -48,9 +48,9 @@ public class LoginActivity extends AppCompatActivity {
         emailEditText.setError(null);
         senhaEditText.setError(null);
 
-        if(emailDigitado.equals("erik.antunes@digitalhouse.com") && senhaDigitada.equals("123456")){
+        if(emailDigitado.equals("eduardo") && senhaDigitada.equals("123")){
 
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, Home.class);
 
             Bundle bundle = new Bundle();
 
