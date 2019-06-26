@@ -1,23 +1,21 @@
 package br.com.digitalhouse.digitalhousegroceryapp;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.ListFragment;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
-public class Home extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import br.com.digitalhouse.digitalhousegroceryapp.interfaces.FragmentActionsListener;
+
+public class HomeActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener, FragmentActionsListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +44,6 @@ public class Home extends AppCompatActivity
         }
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -55,23 +52,32 @@ public class Home extends AppCompatActivity
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
 
-
-
         if (id == R.id.nav_compras) {
-            // Handle the camera action
-
-            transaction.replace(R.id.container_id,new FragmentCompras());
-        } else if (id == R.id.nav_lista) {
-            transaction.replace(R.id.container_id,new FragmentLista());
-
-        } else if (id == R.id.nav_promocoes){
-            transaction.replace(R.id.container_id,new FragmentPromocao());
-
+            transaction.replace(R.id.container_id, new ComprasFragment());
+        } else if (id == R.id.nav_listas) {
+            transaction.replace(R.id.container_id, new ListaSalvaFragment());
+        } else if (id == R.id.nav_promocoes) {
+            transaction.replace(R.id.container_id, new PromocaoFragment());
         }
+
         transaction.commit();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void substituirFragment(Fragment fragment) {
+
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.container_id,fragment);
+        transaction.commit();
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }

@@ -13,25 +13,25 @@ import java.util.List;
 import br.com.digitalhouse.digitalhousegroceryapp.R;
 import br.com.digitalhouse.digitalhousegroceryapp.model.Produto;
 
-public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHolder> {
+public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHolder>{
 
     private List<Produto> listaProdutos;
 
     public ProdutoAdapter(List<Produto> listaProdutos){
         this.listaProdutos = listaProdutos;
     }
+
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.produto_celula,viewGroup,false);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.produto_celula, viewGroup, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        Produto produto = listaProdutos.get(i);
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+        Produto produto = listaProdutos.get(position);
         viewHolder.setupProduto(produto);
-
     }
 
     @Override
@@ -44,8 +44,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
         private TextView descricaoTextView;
         private TextView quantidadeTextView;
         private TextView unidadeTextView;
-        private CheckBox compraCheckBox;
-
+        private CheckBox compradoCheckBox;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -53,20 +52,15 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
             descricaoTextView = itemView.findViewById(R.id.descricao_text_view);
             quantidadeTextView = itemView.findViewById(R.id.quantidade_text_view);
             unidadeTextView = itemView.findViewById(R.id.unidade_text_view);
-            compraCheckBox = itemView.findViewById(R.id.comprado_check_box);
-
+            compradoCheckBox = itemView.findViewById(R.id.comprado_check_box);
         }
 
-        public void setupProduto (Produto produto){
-
+        public void setupProduto(Produto produto){
             descricaoTextView.setText(produto.getDescricao());
             quantidadeTextView.setText(""+produto.getQuantidade());
             unidadeTextView.setText(produto.getUnidade());
-            compraCheckBox.setChecked(produto.isComprado());
-
+            compradoCheckBox.setChecked(produto.isComprado());
         }
     }
+
 }
-
-
-

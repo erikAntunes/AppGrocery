@@ -19,10 +19,10 @@ import br.com.digitalhouse.digitalhousegroceryapp.model.Produto;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentCompras extends Fragment {
+public class ComprasFragment extends Fragment {
 
 
-    public FragmentCompras() {
+    public ComprasFragment() {
         // Required empty public constructor
     }
 
@@ -30,8 +30,7 @@ public class FragmentCompras extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_fragment_compras,container,false);
+        View view = inflater.inflate(R.layout.fragment_compras, container, false);
 
         List<Produto> listaProdutos = getListaProdutos();
 
@@ -39,16 +38,15 @@ public class FragmentCompras extends Fragment {
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
 
-        RecyclerView recyclerView = view.findViewById(R.id.produtos_recycle_view);
+        RecyclerView recyclerView = view.findViewById(R.id.produtos_recycler_view);
 
         recyclerView.setAdapter(produtoAdapter);
         recyclerView.setLayoutManager(layoutManager);
 
-
         return view;
     }
-    private List<Produto> getListaProdutos(){
 
+    private List<Produto> getListaProdutos(){
         List<Produto> listaProdutos = new ArrayList<>();
 
         Produto produto1 = new Produto();
@@ -59,29 +57,27 @@ public class FragmentCompras extends Fragment {
         listaProdutos.add(produto1);
 
         Produto produto2 = new Produto();
-        produto2.setQuantidade(2);
-        produto2.setUnidade("kg");
-        produto2.setDescricao("Cenoura");
+        produto2.setQuantidade(1);
+        produto2.setUnidade("un.");
+        produto2.setDescricao("Sabão em pó");
         produto2.setComprado(false);
         listaProdutos.add(produto2);
 
         Produto produto3 = new Produto();
-        produto3.setQuantidade(2);
+        produto3.setQuantidade(5);
         produto3.setUnidade("kg");
-        produto3.setDescricao("Batata");
+        produto3.setDescricao("Arroz");
         produto3.setComprado(false);
         listaProdutos.add(produto3);
 
         Produto produto4 = new Produto();
-        produto4.setQuantidade(2);
-        produto4.setUnidade("kg");
-        produto4.setDescricao("Arroz");
-        produto4.setComprado(false);
+        produto4.setQuantidade(10);
+        produto4.setUnidade("unid.");
+        produto4.setDescricao("Papel Higiênico");
+        produto4.setComprado(true);
         listaProdutos.add(produto4);
 
         return listaProdutos;
-
-
     }
-}
 
+}

@@ -3,16 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentLista"
-    android:background="@color/azul_facebook">
+    android:background="@color/colorAccent"
+    tools:context=".PromocaoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Lista"
         android:textColor="@color/branco"
         android:gravity="center"
-        />
+        android:text="Promoções" />
 
 </FrameLayout>

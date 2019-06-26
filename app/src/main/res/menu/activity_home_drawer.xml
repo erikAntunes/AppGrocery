@@ -9,13 +9,13 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="Compras" />
         <item
-            android:id="@+id/nav_lista"
+            android:id="@+id/nav_listas"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Listas Salvas" />
         <item
             android:id="@+id/nav_promocoes"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Promoções" />
-
     </group>
+
 </menu>

@@ -1,6 +1,7 @@
 package br.com.digitalhouse.digitalhousegroceryapp;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -26,55 +27,52 @@ public class MainActivity extends AppCompatActivity {
         String email = bundle.getString("EMAIL");
 
         // Buscar elemento na tela por id
-       // TextView emailText = findViewById(R.id.email_text);
+//        TextView emailText = findViewById(R.id.email_text);
 
         // Alterar o texto
-       // emailText.setText("Usuário: "+email);
+//        emailText.setText("Usuário: "+email);
 
-        Button comprasButton = findViewById(R.id.button);
+        Button comprasButton = findViewById(R.id.compras_button);
         comprasButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 exibirComprasFragment();
             }
         });
 
-        Button listaButton = findViewById(R.id.button2);
-        listaButton.setOnClickListener(new View.OnClickListener() {
+        Button listaSalvaButton = findViewById(R.id.lista_button);
+        listaSalvaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exibirListaFragment();
+                exibirListasFragment();
             }
         });
 
-        Button promocaoButton = findViewById(R.id.button3);
+        Button promocaoButton = findViewById(R.id.promocoes_button);
         promocaoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exibirPromocao();
+                exibirPromocoesFragment();
             }
         });
     }
-    private void exibirComprasFragment(){
+
+    private void exibirComprasFragment() {
+        setupFragment(new ComprasFragment());
+    }
+
+    private void exibirListasFragment() {
+        setupFragment(new ListaSalvaFragment());
+    }
+
+    private void exibirPromocoesFragment() {
+        setupFragment(new PromocaoFragment());
+    }
+
+    private void setupFragment(Fragment fragment) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.fundo_01,new FragmentCompras());
+        transaction.replace(R.id.container_id, fragment);
         transaction.commit();
     }
-
-    private void exibirListaFragment(){
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.fundo_01,new FragmentLista());
-        transaction.commit();
-
-    }
-
-    private void exibirPromocao(){
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction  = manager.beginTransaction();
-        transaction.replace(R.id.fundo_01,new FragmentPromocao());
-        transaction.commit();
-    }
-
 }
