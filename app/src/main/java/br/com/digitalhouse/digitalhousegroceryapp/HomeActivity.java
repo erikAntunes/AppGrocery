@@ -1,6 +1,7 @@
 package br.com.digitalhouse.digitalhousegroceryapp;
 
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,11 +12,15 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import br.com.digitalhouse.digitalhousegroceryapp.interfaces.FragmentActionsListener;
+import br.com.digitalhouse.digitalhousegroceryapp.interfaces.NovaListaListener;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, FragmentActionsListener {
+        implements NavigationView.OnNavigationItemSelectedListener, FragmentActionsListener,BottomNavigationView.OnNavigationItemSelectedListener, NovaListaListener {
+
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,11 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
+
     }
 
     @Override
@@ -78,6 +88,18 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+    @Override
+    public void criarNovaLista(String nome) {
+
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.remove(manager.getFragments().get(1));
+        transaction.commit();
+
+        Toast.makeText(this,"Criando lista "+nome,Toast.LENGTH_SHORT).show();
 
     }
 }
