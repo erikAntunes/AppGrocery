@@ -96,7 +96,7 @@ public class HomeActivity extends AppCompatActivity
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.remove(manager.getFragments().get(1));
+        transaction.remove(manager.findFragmentByTag("POP_NOVA_LISTA"));
         transaction.commit();
 
         Toast.makeText(this,"Criando lista "+nome,Toast.LENGTH_SHORT).show();
